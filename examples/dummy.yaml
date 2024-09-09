@@ -19,5 +19,5 @@ metadata:
     lighthouse.com/website-url: https://backstage.io
 spec:
   type: library
-  owner: DDL-Infrastructure&Platform-EnterpriseIT&Operations
+  owner: ddl-infrastructure_platform-enterpriseit_operations
   lifecycle: experimental
