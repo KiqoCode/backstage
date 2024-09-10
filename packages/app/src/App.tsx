@@ -37,6 +37,9 @@ import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
+import { UnifiedThemeProvider } from '@backstage/theme';
+import LightIcon from '@material-ui/icons/WbSunny';
+import { treTheme } from './theme/treTheme';
 
 const app = createApp({
   apis,
@@ -57,13 +60,22 @@ const app = createApp({
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },
+  themes: [{
+    id: 'tre-theme',
+    title: '3IDP Theme',
+    variant: 'light',
+    icon: <LightIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={treTheme} children={children} />
+    ),
+  }],
   components: {
     SignInPage: props => (
       <SignInPage
         {...props}
         auto
         provider={{
-          id: 'custom-auth-provider',
+          id: 'microsoft',
           title: 'Microsoft',
           message: 'Sign in using Azure SSO',
           apiRef: microsoftAuthApiRef,
